@@ -1,0 +1,20 @@
+class Solution
+{
+    public static void swap(long arr1[], long arr2[], int i, int j){
+        long temp = arr1[i];
+        arr1[i]=arr2[j];
+        arr2[j]=temp;
+    } 
+    public static void merge1(long arr1[], long arr2[], int n, int m) 
+    {
+        int  j=0;
+        
+        for(int i=0;i<n;i++){
+            if(arr1[i]>arr2[0]){
+                swap(arr1,arr2,i,0);
+                Arrays.sort(arr2);
+            }
+            
+        }
+    }
+}
