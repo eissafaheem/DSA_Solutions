@@ -1,0 +1,29 @@
+Q.Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
+
+Floyd's Algorithm
+
+class Solution {
+    public int findDuplicate(int[] arr) {
+        int slow = arr[0];
+        int fast = arr[0];
+        int n = arr.length;
+        
+        do{
+    
+            slow = arr[slow];
+            fast = arr[arr[fast]];
+            
+        }while(slow!=fast);
+        System.out.print(fast);
+        
+        fast = arr[0];
+        
+        while(slow!=fast){
+            slow = arr[slow];
+            fast = arr[fast];
+        }
+        
+        
+        return fast;
+    }
+}
