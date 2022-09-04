@@ -1,0 +1,19 @@
+Q. Find out the minimum possible difference between the height of the shortest and tallest towers after you have modified each tower.
+
+class Solution {
+    int getMinDiff(int[] arr, int n, int k) {
+        
+    Arrays.sort(arr);
+        int mn=0, mx=0;
+        int result = arr[n-1]-arr[0];
+        for(int i=1;i<n;i++){
+           mx = Math.max(arr[i-1]+k,arr[n-1]-k);
+           mn = Math.min(arr[i]-k,arr[0]+k);
+           
+           if(mn>=0){
+               result = Math.min(result,mx-mn);
+           }
+        }
+        return result;
+    }
+}
