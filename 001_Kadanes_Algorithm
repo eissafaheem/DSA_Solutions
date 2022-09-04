@@ -1,0 +1,12 @@
+class Solution{
+
+    long maxSubarraySum(int arr[], int n){
+        
+        int msum=arr[0], csum=arr[0];
+        for(int i=1;i<n;i++){
+            csum=Math.max(arr[i],arr[i]+csum);
+            msum = Math.max(csum,msum);
+        }
+        return msum;
+    }
+}
