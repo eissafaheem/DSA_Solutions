@@ -1,0 +1,33 @@
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        
+        int rows = intervals.length;
+        
+        ArrayList<int[]>  arr= new ArrayList<>();
+        int i=0;
+        
+        Arrays.sort(intervals,(a,b)->Integer.compare(a[0],b[0]));
+        if(intervals.length<2){
+            return intervals;
+        }
+        arr.add(intervals[0]);
+        for( i=1;i<rows;i++){
+            if(arr.get(arr.size()-1)[1]>=intervals[i][0]){
+                
+                int a[] = new int[2];
+                System.out.println(arr.get(arr.size()-1)[0]);
+                a[0]=arr.get(arr.size()-1)[0];
+                a[1]=Integer.max(arr.get(arr.size()-1)[1],intervals[i][1]);
+                arr.remove(arr.size()-1);
+                arr.add(a);   
+            }else{
+                 arr.add(intervals[i]); 
+            }
+        }
+       
+        
+        return arr.toArray(new int[arr.size()][2]);
+       
+        
+    }
+}
