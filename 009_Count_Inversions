@@ -1,0 +1,57 @@
+class Solution
+{
+    public static long merge(long arr[], int s,int mid, int e){
+        int n1 = mid-s+1;
+        int n2 = e-mid;
+        long ans=0;
+        
+        long a1[] = new long[n1];
+        long a2[] = new long[n2];
+        
+        for(int i=0;i<n1;i++){
+            a1[i] = arr[s+i];
+        }
+        for(int i=0;i<n2;i++){
+            a2[i] = arr[mid+1+i];
+        }
+        
+        int i=0,j=0,k=s;
+        
+        while(i<n1&&j<n2){
+            if(a1[i]<=a2[j]){
+                arr[k++]=a1[i++];
+            }else{
+                arr[k++]=a2[j++];
+                ans+=(mid + 1) - (s + i);
+            }
+        }
+        while(i<n1){
+            arr[k++]=a1[i++];
+        }
+        
+        while(j<n2){
+            arr[k++]=a2[j++];
+        }
+        
+        
+        return ans;
+    }
+    public static long mergeSort(long arr[], int s, int e){
+        
+        long ans=0;
+        if(s<e){
+            int mid = (s+e)/2;
+            ans+= mergeSort(arr,s,mid);
+            ans+= mergeSort(arr,mid+1,e);
+            
+            ans+=merge(arr,s,mid,e);
+        }
+        
+        return ans;
+    }
+    
+    static long inversionCount(long arr[], long N)
+    {
+        return mergeSort(arr, 0, arr.length-1);
+    }
+}
