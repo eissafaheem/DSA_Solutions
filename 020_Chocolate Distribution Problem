@@ -1,0 +1,51 @@
+//New One
+class Solution
+{
+    public long findMinDiff (ArrayList<Integer> a, int n, int m)
+    {
+        Collections.sort(a);
+        long mdiff = Integer.MAX_VALUE;
+        
+        if(n==m){
+            return a.get(n-1)-a.get(0);
+        }
+        
+        for(int i=0;i+m-1<n;i++){
+            long cdiff = a.get(i+(m-1))-a.get(i);
+            mdiff = Math.min(cdiff,mdiff);
+        }
+        
+        return mdiff;
+    }
+}
+
+
+
+//Old One
+
+class Solution
+{
+    public long findMinDiff (ArrayList<Integer> a, int n, int m)
+    {
+        int diff=0,mdiff = Integer.MAX_VALUE;
+        int i=0,j=m-1;
+        Collections.sort(a);
+        while(i<=n-m && j<n){
+                
+            diff = a.get(j)-a.get(i);
+            
+            
+            
+            
+            if(diff<mdiff)
+            {
+                mdiff = diff;
+            }
+            i++;
+            j++;
+        }
+        
+        
+        return mdiff;
+    }
+}
