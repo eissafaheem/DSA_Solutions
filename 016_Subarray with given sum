@@ -1,0 +1,40 @@
+class Solution
+{
+    //Function to find a continuous sub-array which adds up to a given number.
+    static ArrayList<Integer> subarraySum(int[] arr, int n, int s) 
+    {
+        int i=0,j=0, csum = arr[0];
+        ArrayList<Integer> a = new ArrayList<Integer>();
+        
+        if(s==0){
+            a.add(-1);
+            return a;
+        }
+        
+        while(j<n && i <n){
+            if(csum==s){
+                a.add(i+1);
+                a.add(j+1);
+                
+                return a;
+            }
+            else if(csum > s){
+                csum-=arr[i];
+                i++;
+            }
+            else{
+                j++;
+                if(j>=n){
+                    break;
+                }
+                csum += arr[j];
+                // System.out.println(csum);
+                
+            }
+            
+        }
+        if(a.size()==0)
+        a.add(-1);
+        return a;
+    }
+}
