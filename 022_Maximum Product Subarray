@@ -1,0 +1,43 @@
+//Naive
+
+class Solution {
+    long maxProduct(int[] arr, int n) {
+        long prod = 1, mprod=arr[0];
+        for(int x=0;x<n;x++){
+            prod=arr[x];
+            for(int y=x+1;y<n;y++){
+                mprod=Math.max(prod,mprod);
+                prod*=arr[y];
+            }
+            mprod=Math.max(prod,mprod);
+        }
+        return mprod;        
+    }
+}
+
+
+
+
+//best
+class Solution {
+    long maxProduct(int[] arr, int n) {
+        long ans=arr[0], ma=arr[0], mn = arr[0];
+        
+        for(int i=1;i<n;i++){
+            
+            if(arr[i]<0){
+                long temp = mn;
+                mn= ma;
+                ma = temp;
+            }
+            
+            ma=Math.max(arr[i],ma*arr[i]);
+            mn=Math.min(arr[i],mn*arr[i]);
+            
+            ans=Math.max(ans,ma);
+            
+            
+        }
+        return ans;
+    }
+}
