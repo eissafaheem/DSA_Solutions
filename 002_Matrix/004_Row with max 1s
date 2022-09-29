@@ -1,0 +1,33 @@
+class Solution {
+    
+    static int countNoOf1s(int arr[], int n){
+        int s = 0, e=n-1;
+        while(s<=e){
+            int mid = (s+e)/2;
+            
+            if(arr[mid]==0){
+                s = mid+1;
+            }
+            else{
+                e=mid-1;
+            }
+        }
+        return n-s;
+    }
+    
+    int rowWithMax1s(int arr[][], int n, int m) {
+        
+        int mxNo = Integer.MIN_VALUE, mxIdx=-1;
+        for(int i=0;i<n;i++){
+            int cnt = countNoOf1s(arr[i],arr[i].length);
+            if(mxNo<cnt){
+                mxNo=cnt;
+                mxIdx = i;
+                if(cnt==0){
+                    mxIdx = -1;
+                }
+            }
+        }
+        return mxIdx;
+    }
+}
