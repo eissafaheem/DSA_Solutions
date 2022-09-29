@@ -1,0 +1,74 @@
+class Solution {
+    
+    static int maxAreaInHist(int arr[]){
+        int n = arr.length;
+        
+        Stack<Integer> st = new Stack<>();
+        
+        int left[]=new int[n];
+        int right[]=new int[n];
+        int total[]=new int[n];
+        
+        for(int i=0;i<n;i++){
+            while(!st.isEmpty() && arr[st.peek()]>=arr[i]){
+                st.pop();
+            }
+            if(st.isEmpty()){
+                left[i]=0;
+            }
+            else{
+                left[i] = st.peek()+1;
+            }
+            st.push(i);
+        }
+        while(!st.isEmpty()){
+            st.pop();
+        }
+        for(int i=n-1;i>=0;i--){
+            while(!st.isEmpty() && arr[st.peek()]>=arr[i]){
+                st.pop();
+            }
+            if(st.isEmpty()){
+                right[i]=n-1;
+            }
+            else{
+                right[i] = st.peek()-1;
+            }
+            st.push(i);
+        }
+        for(int i=0;i<n;i++){
+            total[i]=right[i]-left[i]+1;
+        }
+        int ans=-1;
+        for(int i=0;i<n;i++){
+            ans = Math.max(ans,total[i]*arr[i]);
+        }
+        
+        return ans;
+    }
+    public int maxArea(int M[][], int n, int m) {
+        int currHist[] = M[0];
+        
+        int area = maxAreaInHist(currHist);
+        
+        for(int i=1;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(M[i][j]==1){
+                    currHist[j]+=1;
+                }else{
+                    currHist[j]=0;
+                }
+            }
+            
+            area = Math.max(maxAreaInHist(currHist),area);    
+            
+            // for(int z=0;z<m;z++){
+            // System.out.print(currHist[z]+" ");
+                
+            // }
+            // System.out.println();
+        }
+        
+        return area;
+    }
+}
