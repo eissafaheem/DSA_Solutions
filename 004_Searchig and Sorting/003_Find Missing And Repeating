@@ -1,0 +1,33 @@
+class Solve {
+    int[] findTwoElement(int arr[], int nn) {
+        
+        long n= arr.length;
+        long osum = (n*(n+1))/2;
+        long asum=0;
+        for(int i=0;i<n;i++){
+            asum+=arr[i];
+        }
+        
+        long diff=asum-osum;
+        // diff = diff<0?-1*diff:diff;
+        long sosum = (n*(n+1)*((2*n)+1))/6;
+        long sasum=0;
+        for(int i=0;i<n;i++){
+            sasum+=arr[i]*arr[i];
+        }
+        
+        long sdiff=sasum-sosum;
+        // sdiff = sdiff<0?-1*sdiff:sdiff;
+        
+        
+        long xplusy = ((sdiff)/(diff));
+        long xminusy = diff;
+        
+        long x = (xplusy+xminusy)/2;
+        long y = xplusy -x;
+        
+        int ans[] = {(int)x,(int)y};
+        
+        return ans;
+    }
+}

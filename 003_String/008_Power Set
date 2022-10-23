@@ -1,0 +1,23 @@
+public class Main
+{
+    static boolean isSet(int i,int n){
+        return ((i)&(1<<n))==1;
+    }
+	public static void main(String[] args) {
+		
+		String s = "132";
+		int n=s.length();
+		for(int i=0;i<Math.pow(2,n);i++){
+        //   System.out.print(i+" "); 
+		    for(int j=0;j<n;j++){
+		        if((i&(1<<j))>0){
+		          // System.out.print(1); 
+		           System.out.print(s.charAt(j)); 
+		        }else{
+		          // System.out.print(0); 
+		        }
+		    }
+	        System.out.println();
+		}
+	}
+}
