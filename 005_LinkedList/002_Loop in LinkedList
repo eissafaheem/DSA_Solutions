@@ -1,0 +1,22 @@
+class Solution {
+    public static boolean detectLoop(Node head){
+        
+        Node slow=head;
+        Node fast=head;
+        
+        if(head==null || head.next==null || head.next.next==null){
+            return false;
+        }
+        
+        do{
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                return true;
+            }
+            
+        }while(fast.next!=null && fast.next.next!=null);
+        
+        return false;
+    }
+}
