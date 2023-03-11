@@ -1,0 +1,41 @@
+//Itrative Approach
+class Solution
+{
+    Node reverseList(Node head)
+    {
+        Node prev =null;
+        Node forv = head;
+        Node curr=forv;
+        
+        while(curr!=null){
+            forv=forv.next;
+            curr.next=prev;
+            prev=curr;
+            curr=forv;
+            
+        }
+        
+        return prev;
+    }
+}
+
+//Recursive
+class Solution
+{
+    static Node reverse(Node forv, Node curr, Node prev){
+        if(curr==null){
+            return prev;
+        }
+        
+        forv=forv.next;
+        curr.next=prev;
+        prev=curr;
+        curr=forv;
+        
+        return reverse(forv,curr,prev);
+    }
+    Node reverseList(Node head)
+    {
+        return reverse(head,head,null);
+    }
+}

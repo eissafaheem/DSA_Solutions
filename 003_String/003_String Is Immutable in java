@@ -1,0 +1,37 @@
+Mutation means changing values.
+Strins are immutabe.
+When string is declared it resides in String pool in heap memory.
+
+String str = "Naveen"
+String str1 = "Naveen"
+String  str2 = "Eissa"
+
+In this case new heap memmory is not allocated to str1.
+The same address of heap is passed to str1 in stack since both values are same.
+
+    Stack                                       Heap: String Pool
++---------------+                               101 -> Naveen
+|  str      101 |                               102 -> Eissa
+|  str1     101 |
+|  str2     102 |
++---------------+
+
+str = Rizwan
+
+Now the str value is changes so new memory is allocated to it, the string is not changed. Hence we can say that string is immutable.
+
++---------------+
+|  str      102 |                              101 -> Naveen
+|  str1     101 |                              102 -> Eissa 
+|  str2     103 |                              103 -> Rizwan
++---------------+
+
+
+String s = new String("Naveen")
+When we declare string as, we donot use string pool, instead an object is created directly in heap, but if value already exhists then we will be using string pool address in it.(eg naveen 101).
+
+It is Flyweight pattern: Design pattern: same obj used.
+increases performence.
+
+
+https://www.youtube.com/watch?v=to9DPVsdByE&t=288s

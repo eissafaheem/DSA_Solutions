@@ -1,0 +1,44 @@
+class Solution
+{
+    static Node reverse(Node head){
+        Node forv=head;
+        Node curr=forv;
+        Node prev=null;
+        
+        while(curr!=null){
+            forv=forv.next;
+            curr.next=prev;
+            prev=curr;
+            curr=forv;
+        }
+        
+        return prev;
+        
+    } 
+    public static Node addOne(Node head) 
+    { 
+        head=reverse(head);
+        Node temp = head;
+        int carr=1;
+        while(temp!=null){
+            int data = temp.data;
+            int newData = temp.data+carr;
+            temp.data=newData%10;
+            carr=newData/10;
+            temp=temp.next;
+        }
+        
+        if(carr>0){
+            temp=head;
+            while(temp.next!=null){
+                temp=temp.next;
+            }
+            Node extra=new Node(carr);
+            temp.next=extra;
+        }
+        
+        return reverse(head);
+        
+        
+    }
+}

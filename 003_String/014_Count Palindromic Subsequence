@@ -1,0 +1,34 @@
+//Brutforce
+class Solution
+{
+    static boolean  p(String s){
+        int i=0, j=s.length()-1;
+        if(s=="")return false;
+        
+        while(i<j){
+            if(s.charAt(i)!=s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        
+        return true;
+    }
+    long countPS(String str)
+    {
+        int n=str.length(),c=0;
+        for(int i=0;i<Math.pow(2,n);i++){
+            String t="";
+            for(int j=0;j<n;j++){
+                if((i&1<<j)>0){
+                    t+=str.charAt(j);
+                }
+            }
+            if(p(t)==true){
+                c++;
+            }
+        }
+        return c;
+    }
+}

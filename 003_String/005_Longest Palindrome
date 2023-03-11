@@ -1,0 +1,33 @@
+
+//Naive
+class Solution{
+    
+    static boolean isPalindrome(String s, int i, int j){
+        while(i<j){
+            if(s.charAt(i)!=s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        } 
+        
+        return true;
+    }
+    static String longestPalin(String S){
+        
+        int max=Integer.MIN_VALUE, maxi=0, maxj=0;
+        
+        for(int i=0;i<S.length();i++){
+            for(int j=i+1;j<S.length();j++){
+                if(isPalindrome(S,i,j)){
+                    if(max<(j-i)){
+                        max=j-i;
+                        maxi=i;
+                        maxj=j;
+                    }
+                }
+            }
+        }
+        return S.substring(maxi,maxj+1);
+    }
+}

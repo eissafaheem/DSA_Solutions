@@ -1,0 +1,51 @@
+//Recursive
+class Solution
+{
+    static int fun(String s1, String s2, int i, int j){
+        
+        if(i>=s1.length() || j>=s2.length()){
+            return 0;
+        }
+        
+        if(s1.charAt(i)==s2.charAt(j) && i!=j){
+            return 1+fun(s1,s2,i+1,j+1);
+        }
+        else
+        return Math.max(fun(s1,s2,i,j+1),fun(s1,s2,i+1,j));
+        
+    }
+    public int LongestRepeatingSubsequence(String str)
+    {
+        return fun(str,str,0,0);
+    }
+}
+
+//Top Down DP
+class Solution
+{
+    static int fun(String s1, String s2, int i, int j, int arr[][]){
+        
+        if(i>=s1.length() || j>=s2.length()){
+            return 0;
+        }
+        
+        if(arr[i][j]!=0){
+            return arr[i][j];
+        }
+        
+        int ans = 0;
+        if(s1.charAt(i)==s2.charAt(j) && i!=j){
+            ans=1+fun(s1,s2,i+1,j+1, arr);
+        }
+        else
+        ans = Math.max(fun(s1,s2,i,j+1,arr),fun(s1,s2,i+1,j,arr));
+        
+        arr[i][j] = ans;
+        return ans;
+    }
+    public int LongestRepeatingSubsequence(String str)
+    {
+        int arr[][] = new int[str.length()][str.length()];
+        return fun(str,str,0,0,arr);
+    }
+}

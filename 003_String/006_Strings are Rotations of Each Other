@@ -1,0 +1,18 @@
+
+public class Main
+{
+	public static void main(String[] args) {
+		String s1 = "mypencil";
+		String s2 = "encilmyp";
+		String s3 = s2+s2;
+		int n = s3.length();
+		int i=0;
+		while(i!=n-i){
+		    if(s1.equals(s3.substring(i,i+s1.length()))){
+	    	    System.out.println("yes");
+	    	    break;
+		    }
+		    i++;
+		}
+	}
+}

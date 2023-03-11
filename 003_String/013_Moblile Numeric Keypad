@@ -1,0 +1,42 @@
+class Solution 
+{ 
+    String printSequence(String S) 
+    { 
+       HashMap<Character,String> hs= new HashMap<>();
+        hs.put('a',"2");
+        hs.put('b',"22");
+        hs.put('c',"222");
+        hs.put('d',"3");
+        hs.put('e',"33");
+        hs.put('f',"333");
+        hs.put('g',"4");
+        hs.put('h',"44");
+        hs.put('i',"444");
+        hs.put('j',"5");
+        hs.put('k',"55");
+        hs.put('l',"555");
+        hs.put('m',"6");
+        hs.put('n',"66");
+        hs.put('o',"666");
+        hs.put('p',"7");
+        hs.put('q',"77");
+        hs.put('r',"777");
+        hs.put('s',"7777");
+        hs.put('t',"8");
+        hs.put('u',"88");
+        hs.put('v',"888");
+        hs.put('w',"9");
+        hs.put('x',"99");
+        hs.put('y',"999");
+        hs.put('z',"9999");
+        hs.put(' ',"0");
+        
+        String t="";
+        for(int i=0;i<S.length();i++){
+            t+=hs.get(Character.toLowerCase(S.charAt(i)));    
+        }
+        
+        return t;
+        
+    }
+}
