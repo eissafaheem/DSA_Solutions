@@ -1,0 +1,41 @@
+import java.util.*;
+class Stack<T>{
+    
+    ArrayList<T> st;
+    
+    Stack(){
+        this.st = new ArrayList<T>();
+    }
+    
+    public void push(T data){
+        this.st.add(data);
+    }
+    
+    public void pop(){
+        this.st.remove(st.size()-1);
+    }
+    
+    public void top(){
+        System.out.println(st.get(st.size()-1));
+    }
+    
+    public void show(){
+        for(int i=0;i<st.size();i++){
+            System.out.print(st.get(i)+" ");
+        }
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Stack<Integer> st = new Stack<>();
+		st.push(5);
+		st.push(54);
+		st.push(4);
+		st.push(87);
+		st.pop();
+		st.top();
+		
+		st.show();
+	}
+}

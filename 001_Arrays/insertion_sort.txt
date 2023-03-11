@@ -1,0 +1,27 @@
+class Solution
+{
+    static void swap(int arr[],int i, int j){
+        int temp = arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+  static void insert(int arr[],int j)
+  {
+       while(j>=1 && arr[j-1]>arr[j]){
+           swap(arr,j-1,j);
+           j--;
+       }
+  }
+  
+  
+  
+  //Function to sort the array using insertion sort algorithm.
+  public void insertionSort(int arr[], int n)
+  {
+      int j=0;
+      for(int i=1;i<n;i++){
+          j=i;
+          insert(arr,j);
+      }
+  }
+}
